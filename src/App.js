@@ -1,8 +1,6 @@
-import logo from './logo.svg';
 import './App.css';
 import { GalleryProvider } from './context/artContext';
 import Header from './components/Header';
-import Hero from './components/Hero';
 import CategoryGrid from './components/CategoryGrid';
 import Footer from './components/Footer';
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';

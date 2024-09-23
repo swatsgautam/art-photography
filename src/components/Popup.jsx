@@ -1,13 +1,13 @@
-import React, { useContext } from 'react';
-import GalleryContext from '../context/artContext';
+import React from 'react';
+//import GalleryContext from '../context/artContext';
 
 const Popup = ({ image, setPopupData }) => {
-  const { toggleFavorite, favorites } = useContext(GalleryContext);
-  const isFavorite = favorites.some(fav => fav.id === image.id);
+  //const { toggleFavorite } = useContext(GalleryContext);
+  //const isFavorite = favorites.some(fav => fav.id === image.id);
 
-  const handleToggleFavorite = () => {
-      toggleFavorite(image);
-  };
+//   const handleToggleFavorite = () => {
+//       toggleFavorite(image);
+//   };
 
   if (!image) return null;
 
