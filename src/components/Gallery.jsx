@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import GalleryContext from '../context/artContext'
-import { useParams, useNavigate } from 'react-router-dom';
 import Popup from './Popup';
 
 
