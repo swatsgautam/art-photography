@@ -29,7 +29,8 @@ const CategoryGrid = () => {
     };
 
     loadImages();
-  }, [categories, fetchCategoryImages]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [fetchCategoryImages]);
 // When a category is clicked, select the category and navigate to the Gallery page
 const handleCategoryClick = (category) => {
   selectCategory(category); // Set the selected category in the context
