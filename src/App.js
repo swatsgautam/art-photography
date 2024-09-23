@@ -1,24 +1,27 @@
 import logo from './logo.svg';
 import './App.css';
+import { GalleryProvider } from './context/artContext';
+import Header from './components/Header';
+import Hero from './components/Hero';
+import CategoryGrid from './components/CategoryGrid';
+import Footer from './components/Footer';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import Gallery from './components/Gallery';
+import Favorites from './components/Favorites';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <GalleryProvider>
+      <Router>
+          <Header />          
+          <Routes>
+            <Route path="/" element={<CategoryGrid />} />
+            <Route path="/gallery" element={<Gallery />} />
+            <Route path="/favorites" element={<Favorites />} />
+          </Routes>
+          <Footer />
+      </Router>
+    </GalleryProvider>
   );
 }
 
