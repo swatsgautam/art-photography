@@ -12,25 +12,34 @@ const CategoryGrid = () => {
   useEffect(() => {
     const loadImages = async () => {
       try {
-        const images = await Promise.all(categories.map(category => fetchCategoryImages(category)));
-        const imagesMap = {};
+        // Check if images are already cached in local storage
+        const cachedImages = localStorage.getItem('categoryImages');
+        if (cachedImages) {
+          console.log("Images found in cache:", cachedImages); 
+          setCategoryImages(JSON.parse(cachedImages));
+        } else {
+          const images = await Promise.all(categories.map(category => fetchCategoryImages(category.id)));
+          const imagesMap = {};
 
-        images.forEach((imageArray, index) => {
-          // Check if imageArray is defined and has a length
-          if (Array.isArray(imageArray) && imageArray.length > 0) {
-            imagesMap[categories[index]] = imageArray[0]?.urls?.small; // Store one image per category
-          }
-        });
+          images.forEach((imageArray, index) => {
+            if (Array.isArray(imageArray) && imageArray.length > 0) {
+              imagesMap[categories[index].id] = imageArray[0]?.urls?.small;
+            }
+          });
 
-        setCategoryImages(imagesMap);
+          // Store images in state and local storage
+          setCategoryImages(imagesMap);
+          localStorage.setItem('categoryImages', JSON.stringify(imagesMap));
+        }
       } catch (error) {
         console.error("Error fetching category images:", error);
       }
     };
-
+    
     loadImages();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchCategoryImages]);
+  
 // When a category is clicked, select the category and navigate to the Gallery page
 const handleCategoryClick = (category) => {
   selectCategory(category); // Set the selected category in the context
@@ -39,13 +48,13 @@ const handleCategoryClick = (category) => {
   return (
     <>
      <Hero />
-      <section id="category-grid">
+     <section id="category-grid">
         <h2 className="category-heading">Art Categories</h2>
         <div className="grid-container">
           {categories.map(category => (
-            <div key={category} className="grid-item" onClick={() => handleCategoryClick(category)}>
-              <img src={categoryImages[category]} alt={category} />
-              
+            <div key={category.id} className="grid-item" onClick={() => handleCategoryClick(category.id)}>
+              <img src={setCategoryImages[category.id]} alt={category.name} />
+              <span>{category.name}</span>
             </div>
           ))}
         </div>
