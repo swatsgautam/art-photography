@@ -53,7 +53,7 @@ const handleCategoryClick = (category) => {
         <div className="grid-container">
           {categories.map(category => (
             <div key={category.id} className="grid-item" onClick={() => handleCategoryClick(category.id)}>
-              <img src={setCategoryImages[category.id]} alt={category.name} />
+              <img src={categoryImages[category.id]} alt={category.name} />
               <span>{category.name}</span>
             </div>
           ))}
