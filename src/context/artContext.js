@@ -113,6 +113,7 @@ export const GalleryProvider = ({ children }) => {
 //     setFavorites(updatedFavorites);
 //     localStorage.setItem('favorites', JSON.stringify(updatedFavorites)); // Save to local storage
 // };
+
     return (
         <GalleryContext.Provider 
         value={{  heroImages, 
