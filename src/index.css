@@ -16,7 +16,7 @@ header {
   align-items: center;
   padding: 20px;
   background-color: #1c1c1c;
-  color: #f0f0f0; 
+  color: #f0f0f0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
@@ -36,11 +36,12 @@ nav ul li {
 }
 
 nav a {
-  color: #f0f0f0; 
+  color: #f0f0f0;
   text-decoration: none;
   transition: color 0.3s ease;
 }
-nav a:hover{
+
+nav a:hover {
   color: #ffcc00;
 }
 
@@ -61,10 +62,12 @@ nav a:hover{
   color: #ffffff;
   padding: 100px;
 }
+
 .hero-text h1 {
-  font-size:40px;
+  font-size: 40px;
 }
-.hero-text p{
+
+.hero-text p {
   font-size: 18px;
   font-weight: bold;
 }
@@ -77,72 +80,78 @@ main {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px; 
+  gap: 15px;
   margin-bottom: 30px;
   padding: 20px;
 }
 
 .category {
   padding: 10px 20px;
-  background-color: #333; 
+  background-color: #333;
   color: #ffffff;
   border: none;
   border-radius: 25px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease; 
+  transition: background-color 0.3s ease, transform 0.2s ease;
   font-size: 1rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); 
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .category:hover {
-  background-color: #ff6600; 
-  transform: scale(1.05); 
+  background-color: #ff6600;
+  transform: scale(1.05);
 }
 
 .category.active {
-  background-color: #ff5722; 
-    color: #fff; 
-    transform: scale(1.1);
-}
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-  gap: 30px; 
-  padding: 40px 20px;
-  max-width: 1200px; 
-  margin: 0 auto; 
+  background-color: #ff5722;
+  color: #fff;
+  transform: scale(1.1);
 }
 
 .gallery-grid img {
   width: 100%;
   height: 300px;
   object-fit: cover;
-  border-radius: 10px; 
+  border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
+  transition: transform 0.3s ease, box-shadow 0.3s ease;  
+  filter: grayscale(100%); /* Set images to grayscale by default */
+}
+.gallery-grid img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;  
+}
+.gallery-grid .grid-item{
+  filter: grayscale(0);
 }
 
+.gallery-grid .grid-item .heart-icon{
+  right:20px;
+}
 .gallery-grid img:hover {
-  transform: scale(1.05); 
+  transform: scale(1.05);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
 }
 
-
 @media (max-width: 768px) {
   header {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   nav ul {
-      flex-direction: column;
-      align-items: center;
+    flex-direction: column;
+    align-items: center;
   }
 
   nav ul li {
-      margin: 5px 0;
+    margin: 5px 0;
   }
+
   .categories {
     justify-content: center;
     gap: 10px;
@@ -152,47 +161,51 @@ main {
     font-size: 0.9rem;
     padding: 8px 15px;
   }
+
   .grid-item {
-    flex-basis: calc(50% - 40px); /* Two items per row */
+    flex-basis: calc(50% - 40px);
   }
-  
 }
+
 .popup {
   display: flex;
-    position: fixed;
-    z-index: 1000;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.8);
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 }
+
 .popup-content {
-  background-color: white; /* Set background to white */
-    color: #333; /* Set text color to dark for contrast */
-    padding: 15px; /* Add some padding for spacing */
-    border-radius: 5px; /* Optional: rounded corners */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: subtle shadow */
-    text-align: center; /* Center text */
-    width: 100%; /* Full width */
+  background-color: white;
+  color: #333;
+  padding: 15px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 100%;
 }
 
 .popup img {
   max-width: 80%;
-    max-height: 80%;
-    margin: 20px 0;
+  max-height: 80%;
+  margin: 20px 0;
 }
+
 #imageBio {
   text-transform: uppercase;
-    margin-top: 5px;
-    font-style: italic;
+  margin-top: 5px;
+  font-style: italic;
 }
-.image-details{
+
+.image-details {
   text-align: center;
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .navigation {
@@ -209,77 +222,28 @@ main {
 }
 
 .prev {
-  left: 10px; /* Position on the left */
-}
-
-.next {
-  right: 10px; /* Position on the right */
-}
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  color: #ffffff;
-  font-size: 30px;
-  cursor: pointer;
-}
-/* 
-.popup-content {
-  padding: 20px;
-  border-radius: 5px;
-  position: relative;
-}
-.popup img {
-  max-width: 80%;
-  max-height: 80%;
-  margin: 20px 0; 
-}
-
-.popup-details {
-  text-align: center;
-  color: #ffffff;
-}
-
-#imageBio {
-  text-transform: uppercase;
-  margin-top: 5px; 
-  font-style: italic;
-}
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  color: #ffffff;
-  font-size: 30px;
-  cursor: pointer;
-}
-
-.navigation {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  background: rgba(0, 0, 0, 0.5);
-  color: #ffffff;
-  border: none;
-  cursor: pointer;
-  padding: 10px;
-  font-size: 20px;
-  z-index: 1001; 
-}
-
-.prev {
   left: 10px;
 }
 
 .next {
   right: 10px;
-} */
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #ffffff;
+  font-size: 30px;
+  cursor: pointer;
+}
+
 .image-container {
-  position: relative; 
+  position: relative;
 }
 
 .img-wrapper {
-  position: relative; /* Make this relative to position the heart icon */
+  position: relative;
 }
 
 .heart-icon {
@@ -288,13 +252,13 @@ main {
   right: 10px;
   cursor: pointer;
   font-size: 24px;
-  color: #fff; /* Default color for liked state */
+  color: #fff;
   z-index: 1;
   transition: color 0.3s ease;
 }
 
 .heart-icon.liked {
-  color: red; /* Change color when liked */
+  color: red;
 }
 
 .view-gallery {
@@ -310,39 +274,6 @@ main {
 .view-gallery:hover {
   background-color: #555;
 }
-
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); 
-  gap: 30px; 
-  padding: 40px 20px;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-.gallery-grid .grid-item{
-  filter: grayscale(0);
-}
-.gallery-grid .grid-item .heart-icon {
-  right:20px;
-}
-
-.gallery-grid img {
-  width: 100%;
-  height: 300px;
-  object-fit: cover;
-  border-radius: 10px; 
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); 
-  transition: transform 0.3s ease, box-shadow 0.3s ease; 
-  
-}
-
-.gallery-grid img:hover {
-  transform: scale(1.05); 
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
- 
-}
-
-
 
 h2 {
   margin-bottom: 20px;
@@ -365,13 +296,13 @@ p {
 }
 
 .grid-item {
-  flex-basis: calc(25% - 40px); 
+  flex-basis: calc(25% - 40px);
   box-sizing: border-box;
   text-align: center;
   padding: 10px;
   border-radius: 10px;
   transition: transform 0.3s ease-in-out;
-  filter: grayscale(100%); 
+  filter: grayscale(100%);
   transition: filter 0.5s ease, transform 0.3s ease-in-out;
 }
 
@@ -383,27 +314,27 @@ p {
 }
 
 .grid-item:hover {
-  filter: grayscale(0); 
-  transform: scale(1.05); 
+  filter: grayscale(0);
+  transform: scale(1.05);
 }
-
 
 .category-label {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); 
-  background-color: rgba(0, 0, 0, 0.5); 
-  color: gold;
+  transform: translate(-50%, -50%);
+  background-color: rgba(255, 215, 0, 0.8); 
+  color: #1c1c1c; 
   padding: 10px;
   text-align: center;
   font-size: 18px;
   font-weight: bold;
   border-radius: 5px;
-  text-transform: uppercase;;
+  text-transform: uppercase;
 }
 
-.category-heading , .favourites-container h1{
+
+.category-heading, .favourites-container h1 {
   text-align: center;
   font-size: 2.5rem;
   margin: 20px 0;
@@ -420,7 +351,7 @@ p {
   position: absolute;
   width: 80px;
   height: 3px;
-  background-color: #ff6347; 
+  background-color: #ff6347;
   left: 50%;
   transform: translateX(-50%);
   bottom: 0;
@@ -446,8 +377,9 @@ p {
   transform: scale(1.05);
   box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.1);
 }
+
 .nav-link.active {
-  font-weight: bold; 
+  font-weight: bold;
   color: gold;
 }
 
@@ -458,22 +390,11 @@ footer {
   position: relative;
 }
 
-.footer-content {
-  max-width: 800px;
-  margin: 0 auto;
+footer a {
+  text-decoration: none;
+  color: #000;
 }
 
-.footer-content p {
-  margin: 0;
-}
-@media (max-width: 1200px) {
-  .grid-item {
-    flex-basis: calc(33.33% - 40px); /* Three items per row */
-  }
-}
-
-@media (max-width: 480px) {
-  .grid-item {
-    flex-basis: 100%; /* One item per row */
-  }
+footer a:hover {
+  text-decoration: underline;
 }

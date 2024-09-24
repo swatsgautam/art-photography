@@ -31,7 +31,7 @@ Welcome to the **Art & Photography** project! This web application allows users 
 
 ## Creation
 
-- Use command npx @knowledgehut/create-js-app artify.
+- Use command npx create-react-app artify.
 - install node module using command "npm install".
 - Use "npm run dev" command to run the application.
 
@@ -41,7 +41,7 @@ Welcome to the **Art & Photography** project! This web application allows users 
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/art-photography.git
+   git clone https://github.com/swatsgautam/react-art.git
    ```
 
 ## File Structure

@@ -7,7 +7,6 @@ const Favorites = () => {
     const [popupData, setPopupData] = useState(null);
 
     const openPopup = (image) => {
-        console.log("Opening popup for image:", image); // Debug log
         setPopupData(image);
     };
 
