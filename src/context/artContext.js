@@ -41,7 +41,7 @@ export const GalleryProvider = ({ children }) => {
             if (cachedCategoryImages) {
                 setCategoryImages(JSON.parse(cachedCategoryImages));
             } else {
-                const response = await fetch(`https://api.unsplash.com/photos/random?count=50&query=${category}&client_id=${apiKey}`);
+                const response = await fetch(`https://api.unsplash.com/photos/random?count=10&query=${category}&client_id=${apiKey}`);
                 const data = await response.json();
                 const imagesWithCategory = data.map(image => ({ ...image, category }));
                 
