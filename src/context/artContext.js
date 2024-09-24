@@ -38,15 +38,14 @@ export const GalleryProvider = ({ children }) => {
 
     const fetchCategoryImages = async (category) => {
         try {
-            console.log("in try")
             const cachedCategoryImages = localStorage.getItem(`categoryImages_${category}`);
             if (cachedCategoryImages) {
                 setCategoryImages(JSON.parse(cachedCategoryImages));
-                console.log(categoryImages)
             } else {
                 const response = await fetch(`https://api.unsplash.com/photos/random?count=50&query=${category}&client_id=${apiKey}`);
                 const data = await response.json();
                 const imagesWithCategory = data.map(image => ({ ...image, category }));
+                
                 setCategoryImages(prev => {
                     const updatedCategoryImages = [...prev, ...imagesWithCategory];
                     localStorage.setItem(`categoryImages_${category}`, JSON.stringify(updatedCategoryImages)); // Cache in local storage

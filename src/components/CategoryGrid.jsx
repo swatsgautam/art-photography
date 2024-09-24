@@ -3,42 +3,51 @@ import GalleryContext from '../context/artContext'
 import Hero from './Hero';
 import { useNavigate } from 'react-router-dom';
 
+const categories = [
+  { id: 'painting', name: 'Painting' },
+  { id: 'sculpture', name: 'Sculpture' },
+  { id: 'photography', name: 'Photography' },
+  { id: 'digital-art', name: 'Digital Art' },
+  { id: 'drawing', name: 'Drawing' },
+  { id: 'street-art', name: 'Street Art' },
+  { id: 'ceramics', name: 'Ceramics' },
+  { id: 'collage', name: 'Collage' },
+  { id: 'abstract-art', name: 'Abstract Art' },
+  { id: 'portraiture', name: 'Portraiture' },
+  { id: 'landscape', name: 'Landscape' },
+  { id: 'astro-photography', name: 'Astro Photography' },
+];
+
+
 const CategoryGrid = () => {
   const { fetchCategoryImages, selectCategory } = useContext(GalleryContext);
-  const categories = ['painting', 'sculpture', 'photography', 'digital-art', 'drawing', 'street-art', 'ceramics', 'collage', 'abstract-art', 'portraiture', 'landscape', 'astro-photography'];
   const [categoryImages, setCategoryImages] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
     const loadImages = async () => {
-      try {
-        // Check if images are already cached in local storage
-        const cachedImages = localStorage.getItem('categoryImages');
+      const fetchedImages = {};
+
+      for (const category of categories) {
+        let cachedImages = localStorage.getItem(`categoryImages_${category.id}`);
+
         if (cachedImages) {
-          console.log("Images found in cache:", cachedImages); 
-          setCategoryImages(JSON.parse(cachedImages));
+          const parsedImages = JSON.parse(cachedImages);
+          fetchedImages[category.id] = parsedImages[0]?.urls.small; // Get the first image URL
         } else {
-          const images = await Promise.all(categories.map(category => fetchCategoryImages(category.id)));
-          const imagesMap = {};
-
-          images.forEach((imageArray, index) => {
-            if (Array.isArray(imageArray) && imageArray.length > 0) {
-              imagesMap[categories[index].id] = imageArray[0]?.urls?.small;
-            }
-          });
-
-          // Store images in state and local storage
-          setCategoryImages(imagesMap);
-          localStorage.setItem('categoryImages', JSON.stringify(imagesMap));
+          const fetchedCategoryImages = await fetchCategoryImages(category.id);
+          if (fetchedCategoryImages && fetchedCategoryImages.length > 0) {
+            fetchedImages[category.id] = fetchedCategoryImages[0].urls.small;
+          }
         }
-      } catch (error) {
-        console.error("Error fetching category images:", error);
       }
+
+      setCategoryImages(fetchedImages); // Update state with the fetched images
     };
-    
+
     loadImages();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [fetchCategoryImages]);
+
   
 // When a category is clicked, select the category and navigate to the Gallery page
 const handleCategoryClick = (category) => {
@@ -48,13 +57,25 @@ const handleCategoryClick = (category) => {
   return (
     <>
      <Hero />
-     <section id="category-grid">
+     
+      <section id="category-grid">
         <h2 className="category-heading">Art Categories</h2>
         <div className="grid-container">
-          {categories.map(category => (
-            <div key={category.id} className="grid-item" onClick={() => handleCategoryClick(category.id)}>
-              <img src={categoryImages[category.id]} alt={category.name} />
-              <span>{category.name}</span>
+          {categories.map((category) => (
+            <div 
+              key={category.id} 
+              className="grid-item" 
+              onClick={() => handleCategoryClick(category.id)}
+            >
+              {categoryImages[category.id] ? (
+                <img 
+                  src={categoryImages[category.id]} // Display the respective category image
+                  alt={category.name} 
+                />
+              ) : (
+                <div className="placeholder">Loading...</div> // Placeholder while loading images
+              )}
+              <span className="category-label">{category.name}</span>
             </div>
           ))}
         </div>
@@ -65,3 +86,4 @@ const handleCategoryClick = (category) => {
 }
 
 export default CategoryGrid
+
