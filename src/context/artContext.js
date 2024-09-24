@@ -12,7 +12,7 @@ export const GalleryProvider = ({ children }) => {
         const savedFavorites = localStorage.getItem('favorites');
         return savedFavorites ? JSON.parse(savedFavorites) : [];
     });
-    const apiKey = '-fTQM4z15xugwA4TNvXC_E97PC--pnJ-bNqVwog_b8I';
+    const apiKey = 'i0M4-S9ZHZET4D3ZjpSXRJMh5WdifhcAKvRkcw7Z5Zo';
 
     useEffect(() => {
         // Load cached hero images on initialization
