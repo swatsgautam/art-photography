@@ -35,7 +35,7 @@ const Favorites = () => {
             )}
         </div>
 
-        {popupData && <Popup image={popupData} setPopupData={setPopupData} />}
+        {popupData && <Popup image={popupData} setPopupData={setPopupData} images={favorites} />}
     </div>
 
     );

@@ -79,7 +79,7 @@ const handleImageClick = (image) => {
       </div>
 
       {/* Popup Component */}
-      {popupData && <Popup image={popupData} setPopupData={setPopupData} />} {/* Render Popup if popupData is set */}
+      {popupData && <Popup image={popupData} setPopupData={setPopupData} images={filteredImages} />} {/* Render Popup if popupData is set */}
   </div>
 )
 }
